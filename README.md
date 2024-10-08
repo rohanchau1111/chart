@@ -4,6 +4,20 @@ To deploy a simple application in Kubernetes using Minikube, including a pod and
 
 1. Create a Pod YAML Definition
 Let's start by creating a Pod that runs a simple NGINX container.
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30007 # You can choose any port in the range 30000-32767
+  type: NodePort
 
 yaml
 Copy code
